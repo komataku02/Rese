@@ -1,0 +1,71 @@
+/*--メイン--*/
+
+form {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  ;
+  text-align: center;
+  text-decoration: none;
+}
+
+.form__group {
+  width: 380px;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.login-form__heading {
+  width: 380px;
+  background-color:#4169E1 ;
+  padding: 10px 0;
+  border-radius: 10px 10px 0 0;
+}
+
+form h2 {
+  font-size: 18px;
+  margin: 5px 0 0 14px;
+  text-align: left;
+  color: #ffffff;
+}
+
+
+form input[type="email"],
+form input[type="password"] {
+  font-size: 20px;
+  border: 0;
+  background: none;
+  display: block;
+  margin: 30px 5px 30px 80px;
+  border-bottom: solid 1px gray;
+  width: 270px;
+  outline: none;
+  text-align: left;
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  width: 270px;
+  background-color: #f0f8ff;
+}
+
+.form__button {
+  height: 60px;
+  text-align: right;
+  margin-right: 30px;
+}
+
+.form__button-submit {
+  width: 90px;
+  font-size: 16px;
+  height: 30px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #4169E1;
+  border-radius: 5px;
+}
+

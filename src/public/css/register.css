@@ -1,0 +1,75 @@
+/*--メイン--*/
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: 25px;
+  padding-bottom: 20px;
+}
+
+form input[type="name"],
+form input[type="email"],
+form input[type="password"] {
+  font-size: 20px;
+  border: 0;
+  background: none;
+  display: block;
+  margin: 30px 5px 30px 80px;
+  width: 325px;
+  outline: none;
+  border-bottom: solid 1px gray;
+  text-align: left;
+}
+
+form input[type="name"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  width: 325px;
+  background-color: #f0f8ff;
+}
+
+.registration-form {
+  width: 28rem;
+}
+
+.registration-title {
+  color: #ffffff;
+  background-color: #4169E1;
+  margin: 0;
+  padding:0.5em;
+}
+
+.registration-form-btn {
+  background-color: #ffffff;
+  padding: 1em;
+}
+
+.form__button {
+  text-align: right;
+  width: 90px;
+  margin-left: 18em;
+}
+
+.form__button-submit {
+  text-align: center;
+  width: 90px;
+  font-size: 16px;
+  height: 30px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #4169E1;
+  border-radius: 5px;
+}
+
+.header-nav-item-link {
+  margin-bottom: 0.6em;
+}

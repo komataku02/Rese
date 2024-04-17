@@ -1,0 +1,33 @@
+.done-container{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  width: 500px;
+  height: 350px;
+  padding-top: 80px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.reserve-done{
+  font-size: 24px;
+}
+
+
+
+
+
+.back-link{
+  padding: 10px 15px;
+  margin-top: 20px;
+  font-size: 16px;
+  height: 30px;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #4169E1;
+  border-radius: 5px;
+}

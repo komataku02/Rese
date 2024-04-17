@@ -1,0 +1,21 @@
+body {
+  width: 1230px;
+  margin: 30px 80px;
+}
+
+.shop-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 15px;
+  /* ショップカード間の隙間 */
+}
+
+.shop-card {
+  flex-basis: calc(20%);
+  /* 4列 */
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: #fff;
+  
+}
+
