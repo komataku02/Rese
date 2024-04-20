@@ -40,7 +40,7 @@ Laravel環境構築
 
 ##ER図
 
-./Rese.jpeg
+![画像](./Rese.jpeg)
 
 ##アカウントの種類
 
