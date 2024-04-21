@@ -14,7 +14,7 @@
       <h2>{{ $data->shop_name }}</h2>
     </div>
     <div class="shop_img">
-      <img>画像リンク
+      <img src="{{ asset('storage/' . $data->image) }}" alt="{{ $data->shop_name }}">
     </div>
     <div class="tag_form">
       <div class="area_tag">#{{ $data->area }}</div>
@@ -66,7 +66,7 @@
           @if ($reservations)
           @if ($reservations->isNotEmpty())
           <ul>
-            <div>
+            <div class="reservation-info">
               <p>店舗名: {{ $data->shop_name }}</p>
             </div>
             @foreach ($reservations as $reservation)
@@ -78,7 +78,7 @@
               $reservationDateTime = Carbon\Carbon::parse($reservation->date . ' ' . $reservation->time);
               @endphp
               @if ($reservationDateTime ->isPast()) <a href="{{ route('showReview', ['shop_id' => $data->id, 'reserve_id' => $reservation->id]) }}">レビューを書く</a>
-                @endif
+              @endif
             </li>
             @endforeach
           </ul>

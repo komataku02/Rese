@@ -10,7 +10,7 @@
   <div class="reservation-container">
     <h3>予約状況</h3>
     @foreach ($reservations as $reservation)
-    <div>
+    <div class="reserve-info">
       <p>店舗名: {{ $reservation->shop->shop_name }}</p>
       <p>日付: {{ $reservation->date }}</p>
       <p>時間: {{ $reservation->time }}</p>
@@ -19,7 +19,9 @@
       <form method="post" action="{{ route('delete') }}">
         @csrf
         <input type="hidden" name="reserve_id" value="{{ $reservation->id }}">
-        <button type="submit">削除</button>
+        <div class="delete-button-container">
+          <button class="delete-button">×</button>
+        </div>
       </form>
     </div>
     @endforeach
@@ -31,7 +33,7 @@
       @foreach ($shops as $shop)
       <div class="shop-card">
         <div class="card_img">
-          <img src="{{ $shop->image }}" alt="{{ $shop->shop_name }}">
+          <img src="{{ asset('storage/' . $shop->image) }}" alt="{{ $shop->shop_name }}">
         </div>
         <div class="card_content">
           <div>{{ $shop->shop_name }}</div>

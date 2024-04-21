@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reservation-container,
+.like-container {
+  width: calc(50% - 10px);
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #e39f2b;
+}
+
+a:active {
+  color: #e93a3a;
+}
+
+a:focus {
+  outline: none;
+}
+
+.reserve-info{
+  background-color: #007bff;
+    color: white;
+}
+
+.delete-button {
+  position: absolute;
+  top: -170px;
+  right: 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.delete-button-container {
+  position: relative;
+}
+
+.delete-button:active {
+  background-color: darkred;
+}
+
+
+
+.like-container .shop-card {
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+}
+
+.like-container .shop-card .card_img img {
+  width: 100%;
+}
+
+.like-container .shop-card .card_content {
+  padding: 10px;
+}
+
+.unlike-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.unlike-btn:hover {
+  color: darkred;
+}
+
+.shop-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 15px;
+}
+
+.shop-card {
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: white;
+  margin: 0 auto;/
+}
+
+.card_img img {
+  width: 100%;
+  height: auto;
+}

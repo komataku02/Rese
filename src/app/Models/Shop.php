@@ -17,11 +17,12 @@ class Shop extends Model
         'genre_id',
         'genre',
         'overview',
+        'image',
     ];
 
     public function reserves()
     {
-        return $this->hasMany(Reserve::class, 'reserve_shops');
+        return $this->hasMany(Reserve::class, 'shop_id');
     }
 
     public function user()
@@ -36,6 +37,6 @@ class Shop extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class,'shop_id','id');
+        return $this->hasMany(Review::class, 'shop_id');
     }
 }

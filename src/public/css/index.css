@@ -1,21 +1,49 @@
 body {
-  width: 1230px;
-  margin: 30px 80px;
+  width: 100%;
+  margin: 30px auto;
+  max-width: 1230px;
 }
 
 .shop-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 40px 15px;
-  /* ショップカード間の隙間 */
 }
 
 .shop-card {
-  flex-basis: calc(20%);
-  /* 4列 */
-  border: 1px solid #ccc;
+  width: 25%;
+  padding: 10px;
   box-sizing: border-box;
-  background-color: #fff;
-  
+  background-color: white;
+  margin: 0 auto;
 }
 
+.card_img img {
+  width: 100%;
+  height: auto;
+}
+
+.detail-link{
+  text-decoration: none;
+  background-color: rgb(31, 55, 230);
+  padding: 6px;
+  color: white;
+  border-radius: 10%;
+}
+
+.btn-success{
+  display: flex;
+  border: none;
+  background-color: white;
+  color: gray;
+  margin-right: 5px;
+}
+
+.btn-secondary{
+  display: flex;
+  border: none;
+  background-color: white;
+  color: red;
+  margin-right: 5px;
+}

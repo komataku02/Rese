@@ -8,7 +8,7 @@ use App\Models\Shop;
 use App\Models\Reserve;
 use App\Models\Review;
 use App\Models\User;
-use Carbon\Carbon;
+use App\Http\Requests\ReserveRequest;
 
 class ShopController extends Controller
 {
@@ -17,7 +17,6 @@ class ShopController extends Controller
         $data = Shop::findOrFail($shop_id);
         $reservations = auth()->check() ? auth()->user()->reserves()->where('reserves.shop_id', $shop_id)->get() : [];
 
-        // 店舗に関連する予約情報を取得
         if (auth()->check()) {
             $user = auth()->user();
             $reservations = $user->reserves()->whereHas('shop', function ($query) use ($shop_id) {
@@ -29,10 +28,8 @@ class ShopController extends Controller
         return view('detail', ['data' => $data, 'reservations' => $reservations]);
     }
 
-    public function create(Request $request, $shop_id)
+    public function create(ReserveRequest $request, $shop_id)
     {
-
-        // 予約を作成
         $reservation = new Reserve();
         $reservation->date = $request->date;
         $reservation->time = $request->time;
@@ -40,10 +37,10 @@ class ShopController extends Controller
         $reservation->shop_id = $shop_id;
         $reservation->save();
 
+        $reservation_id = $reservation->id;
 
-        // 中間テーブルにデータを保存
         $user = User::find(Auth::id());
-        $user->reserves()->attach($reservation->id, ['shop_id' => $shop_id]);
+        $user->reserves()->attach($reservation_id, ['shop_id' => $shop_id]);
 
         return redirect('/done');
     }
@@ -77,7 +74,6 @@ class ShopController extends Controller
     public function showReviewForm($shop_id)
     {
         $shop = Shop::findOrFail($shop_id);
-        // ログインしている場合に予約情報を取得する
         $reservation = null;
         if (auth()->check()) {
             $user = auth()->user();
@@ -90,28 +86,22 @@ class ShopController extends Controller
     public function submitReview(Request $request, $shop_id, $reserve_id)
     {
 
-        // 予約情報を取得
-        // ユーザーがログインしていることを確認
         if (!auth()->check()) {
             return redirect()->back()->with('error', 'ログインしてください。');
         }
 
-        // 予約情報を取得
         $reservation = Reserve::find($reserve_id);
 
-        // 既存のレビューを取得
         $existingReview = Review::where('user_id', auth()->id())
             ->where('shop_id', $shop_id)
             ->where('reserve_id', $reserve_id)
             ->first();
 
-        // 既存のレビューがある場合は更新、ない場合は新規作成
         if ($existingReview) {
             $existingReview->stars = $request->stars;
             $existingReview->comment = $request->comment;
             $existingReview->save();
         } else {
-            // 新しいレビューを作成
             $review = new Review();
             $review->shop_id = $shop_id;
             $review->user_id = auth()->id();
@@ -121,7 +111,9 @@ class ShopController extends Controller
             $review->save();
         }
 
-        return redirect()->route('show.detail', ['shop_id' => $shop_id,'reservation' => $reservation])->with('success', 'レビューを送信しました。'
+        return redirect()->route('show.detail', ['shop_id' => $shop_id, 'reservation' => $reservation])->with(
+            'success',
+            'レビューを送信しました。'
         );
     }
 }

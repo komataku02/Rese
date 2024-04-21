@@ -1,13 +1,38 @@
-.container{
-  width: 100%;
+.container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.shop_info-container{
-
+.shop_info-container,
+.reserve_container {
+  width: 48%;
 }
 
-.reserve_form{
 
+.shop_img img {
+  width: 100%;
+}
+
+.reserve_form {
+  background-color: #418cf4;
+  color: white;
+}
+
+.reserve_info-container {
+  background-color: #ffffff;
+  color: black;
+}
+
+.reservation-info {
+  margin-bottom: 10px;
+}
+
+.reserve-btn {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+}
+
+.error-message {
+  color: red;
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Reserve;
 use App\Models\User;
 use App\Models\Like;
 use App\Models\Shop;
@@ -41,12 +39,10 @@ class HomeController extends Controller
     public function show()
     {
         $user = User::with(['reserves' => function ($query) {
-            // 予約日時の近い順にソートする
             $query->orderBy('date')->orderBy('time');
         }, 'reserves.shop'])->find(Auth::id());
         $reservations = $user->reserves;
 
-        // いいねした店舗情報を取得
         $like = $user->likes->pluck('shop_id')->toArray();
         $shops = Shop::whereIn('id', $like)->get();
 

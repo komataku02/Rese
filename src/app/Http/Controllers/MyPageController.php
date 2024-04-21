@@ -6,9 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Reserve;
 use App\Models\User;
-use App\Models\Like;
 use App\Models\Shop;
-use Illuminate\Support\Facades\Redirect;
+
 
 class MyPageController extends Controller
 {
@@ -16,12 +15,10 @@ class MyPageController extends Controller
     {
 
         $user = User::with(['reserves' => function ($query) {
-            // 予約日時の近い順にソートする
             $query->orderByRaw('CONCAT(date, " ", time)')->orderBy('date')->orderBy('time');
         }, 'reserves.shop'])->find(Auth::id());
         $reservations = $user->reserves;
 
-        // いいねした店舗情報を取得
         $like = $user->likes->pluck('shop_id')->toArray();
         $shops = Shop::whereIn('id', $like)->get();
 
@@ -60,16 +57,12 @@ class MyPageController extends Controller
 
     public function update(Request $request, $reserve_id)
     {
-        // ログインユーザーの予約情報のみを更新
         $reservation = Auth::user()->reserves()->findOrFail($reserve_id);
 
-        // リクエストから _token を除外する
         $data = $request->except(['_token']);
 
-        // 予約情報を更新
         $reservation->update($data);
 
-        // マイページにリダイレクト
         return redirect('/mypage')->with('success', '予約情報が更新されました。');
     }
 }

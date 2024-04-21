@@ -99,5 +99,41 @@
       </div>
     </div>
   </div>
+  div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">店舗一覧</div>
+
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>店舗名</th>
+                <th>エリア</th>
+                <th>ジャンル</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($shops as $shop)
+              <tr>
+                <td>{{ $shop->shop_name }}</td>
+                <td>{{ $shop->area }}</td>
+                <td>{{ $shop->genre }}</td>
+                <td>
+                  <a href="{{ route('admin.edit_shop', $shop->id) }}" class="btn btn-primary">編集</a>
+                  <a href="{{ route('admin.show_reservations', $shop->id) }}" class="btn btn-success">予約情報</a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
 @endsection

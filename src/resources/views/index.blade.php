@@ -29,20 +29,24 @@
   @foreach ($shops as $shop)
   <div class="shop-card">
     <div class="card_img">
-      <img src="" alt="{{ $shop->shop_name }}">
+      <img src="{{ asset('storage/' . $shop->image) }}" alt="{{ $shop->shop_name }}">
     </div>
     <div class="card_content">
       <div>{{ $shop->shop_name }}</div>
       <div>#{{ $shop->area }}</div>
       <div>#{{ $shop->genre }}</div>
-      <a href="/detail/{{ $shop->id }}">詳しく見る</a>
+      <a class="detail-link" href="/detail/{{ $shop->id }}">詳しく見る</a>
       @if ($shop->likes()->where('user_id', auth()->id())->exists())
-      <a href="{{ route('unlike', $shop->id) }}" class="btn btn-success btn-sm">
-        解除</a>
+      <form method="post" action="{{ route('unlike', $shop->id) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-success btn-sm">〇</button>
+      </form>
       @else
-      <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
-      <a href="{{ route('like', $shop->id) }}" class="btn btn-secondary btn-sm">
-        いいね</a>
+      <form method="post" action="{{ route('like', $shop->id) }}">
+        @csrf
+        <button type="submit" class="btn btn-secondary btn-sm">〇</button>
+      </form>
       @endif
     </div>
   </div>
